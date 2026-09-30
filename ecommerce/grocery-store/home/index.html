@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>FreshBasket | Home</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="top">
+      Free delivery above ₹999 • Easy returns • Secure payments
+    </div>
+    <header class="header">
+      <nav class="nav">
+        <a class="logo" href="../home/index.html"
+          >🛒 FreshBasket<span>+</span></a
+        >
+        <div class="search">
+          <input
+            id="search"
+            placeholder="Search products, brands, categories"
+          /><button onclick="search()">⌕</button>
+        </div>
+        <div class="nav-links">
+          <a href="../home/index.html">Home</a
+          ><a href="../categories/index.html">Shop</a
+          ><a href="../categories/index.html">Categories</a
+          ><a href="../categories/index.html?wishlist=1">♡ <b data-wish>0</b></a
+          ><a href="../cart/index.html">🛒 <b data-cart>0</b></a>
+        </div>
+      </nav>
+    </header>
+    <section class="hero">
+      <h1>Everything you love, all in one place.</h1>
+      <p>
+        Discover trending products, everyday essentials, exclusive deals and a
+        smooth shopping experience.
+      </p>
+      <a class="btn alt" href="../categories/index.html">Shop Now →</a>
+    </section>
+    <main class="container">
+      <div class="section-title"><h2>Shop by Category</h2></div>
+      <div class="chips">
+        <a class="chip" href="../categories/index.html?category=Fruits"
+          >Fruits</a
+        ><a class="chip" href="../categories/index.html?category=Vegetables"
+          >Vegetables</a
+        ><a class="chip" href="../categories/index.html?category=Dairy">Dairy</a
+        ><a class="chip" href="../categories/index.html?category=Bakery"
+          >Bakery</a
+        ><a class="chip" href="../categories/index.html?category=Beverages"
+          >Beverages</a
+        ><a class="chip" href="../categories/index.html?category=Snacks"
+          >Snacks</a
+        ><a class="chip" href="../categories/index.html?category=Staples"
+          >Staples</a
+        ><a class="chip" href="../categories/index.html?category=Household"
+          >Household</a
+        >
+      </div>
+      <div class="section-title">
+        <h2>Trending Products</h2>
+        <a href="../categories/index.html">View All</a>
+      </div>
+      <div id="list" class="grid"></div>
+    </main>
+    <footer class="footer">
+      <div class="footer-grid">
+        <div>
+          <h3>🛒 FreshBasket</h3>
+          <p>
+            Modern shopping marketplace with products, offers, secure checkout
+            and easy returns.
+          </p>
+        </div>
+        <div>
+          <h3>Shop</h3>
+          <a href="../categories/index.html">All Products</a
+          ><a href="../categories/index.html">New Arrivals</a
+          ><a href="../categories/index.html">Best Sellers</a>
+        </div>
+        <div>
+          <h3>Help</h3>
+          <a href="../cart/index.html">Cart</a
+          ><a href="../checkout/index.html">Checkout</a><a href="#">Returns</a>
+        </div>
+        <div>
+          <h3>Company</h3>
+          <a href="#">About</a><a href="#">Contact</a><a href="#">Privacy</a>
+        </div>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+      const list = document.getElementById("list");
+      list.innerHTML = PRODUCTS.slice(0, 8).map(card).join("");
+
+      list.addEventListener("click", (event) => {
+        const wishButton = event.target.closest("[data-wish-id]");
+        const cartButton = event.target.closest("[data-cart-id]");
+        const button = wishButton || cartButton;
+        const product = PRODUCTS.find(
+          (item) =>
+            item.id ===
+            Number(button?.dataset.wishId || button?.dataset.cartId),
+        );
+
+        if (!product) return;
+        if (wishButton) toggle(product);
+        if (cartButton) add(product, product.option);
+      });
+
+      function card(p) {
+        return `<article class="card"><a href="../product-details/index.html?id=${p.id}"><img src="${p.img}" alt="${p.name}"></a><div class="card-body"><button class="heart" data-wish-id="${p.id}">♡</button><div class="brand">${p.brand} • ${p.category}</div><h3>${p.name}</h3><div class="rating">★★★★★</div><div class="price">${money(p.price)}</div><button class="btn" data-cart-id="${p.id}">Add to Cart</button></div></article>`;
+      }
+    </script>
+  </body>
+</html>

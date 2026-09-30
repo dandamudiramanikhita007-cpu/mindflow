@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>FreshBasket | Cart</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="top">
+      Free delivery above ₹999 • Easy returns • Secure payments
+    </div>
+    <header class="header">
+      <nav class="nav">
+        <a class="logo" href="../home/index.html"
+          >🛒 FreshBasket<span>+</span></a
+        >
+        <div class="search">
+          <input
+            id="search"
+            placeholder="Search products, brands, categories"
+          /><button onclick="search()">⌕</button>
+        </div>
+        <div class="nav-links">
+          <a href="../home/index.html">Home</a
+          ><a href="../categories/index.html">Shop</a
+          ><a href="../categories/index.html">Categories</a
+          ><a href="../categories/index.html?wishlist=1">♡ <b data-wish>0</b></a
+          ><a href="../cart/index.html">🛒 <b data-cart>0</b></a>
+        </div>
+      </nav>
+    </header>
+    <main class="container">
+      <h1>Your Cart</h1>
+      <div id="cart"></div>
+    </main>
+    <footer class="footer">
+      <div class="footer-grid">
+        <div>
+          <h3>🛒 FreshBasket</h3>
+          <p>
+            Modern shopping marketplace with products, offers, secure checkout
+            and easy returns.
+          </p>
+        </div>
+        <div>
+          <h3>Shop</h3>
+          <a href="../categories/index.html">All Products</a
+          ><a href="../categories/index.html">New Arrivals</a
+          ><a href="../categories/index.html">Best Sellers</a>
+        </div>
+        <div>
+          <h3>Help</h3>
+          <a href="../cart/index.html">Cart</a
+          ><a href="../checkout/index.html">Checkout</a><a href="#">Returns</a>
+        </div>
+        <div>
+          <h3>Company</h3>
+          <a href="#">About</a><a href="#">Contact</a><a href="#">Privacy</a>
+        </div>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+      function draw() {
+        let c = cart();
+        if (!c.length) {
+          cartBox.innerHTML =
+            '<div class="empty"><h2>Your cart is empty</h2><br><a class="btn" href="../categories/index.html">Continue Shopping</a></div>';
+          return;
+        }
+        let sub = c.reduce((s, x) => s + x.price * x.qty, 0);
+        cartBox.innerHTML =
+          '<div class="two"><div>' +
+          c
+            .map(
+              (x, i) =>
+                `<div class="cart-row"><img src="${x.img}"><div><b>${x.name}</b><div class="brand">${x.brand} • ${x.option}</div><div class="price">${money(x.price)}</div></div><div class="qty"><button onclick="chg(${i},-1)">−</button>${x.qty}<button onclick="chg(${i},1)">+</button></div><button class="btn" onclick="del(${i})">Remove</button></div>`,
+            )
+            .join("") +
+          '</div><div class="summary"><h2>Summary</h2><p>Subtotal: ' +
+          money(sub) +
+          "</p><p>Delivery: " +
+          (sub >= 999 ? "FREE" : money(99)) +
+          "</p><hr><h2>Total: " +
+          money(sub + (sub >= 999 ? 0 : 99)) +
+          '</h2><br><a class="btn" href="../checkout/index.html">Checkout</a></div></div>';
+      }
+      let cartBox = document.getElementById("cart");
+      function chg(i, n) {
+        let c = cart();
+        c[i].qty += n;
+        if (c[i].qty < 1) c.splice(i, 1);
+        save(c);
+        draw();
+      }
+      function del(i) {
+        let c = cart();
+        c.splice(i, 1);
+        save(c);
+        draw();
+      }
+      draw();
+    </script>
+  </body>
+</html>

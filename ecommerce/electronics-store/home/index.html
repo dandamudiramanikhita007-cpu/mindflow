@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>TechZone | Home</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="top">
+      Free delivery above ₹999 • Easy returns • Secure payments
+    </div>
+    <header class="header">
+      <nav class="nav">
+        <a class="logo" href="../home/index.html">📱 TechZone<span>+</span></a>
+        <div class="search">
+          <input
+            id="search"
+            placeholder="Search products, brands, categories"
+          /><button onclick="search()">⌕</button>
+        </div>
+        <div class="nav-links">
+          <a href="../home/index.html">Home</a
+          ><a href="../products/index.html">Shop</a
+          ><a href="../products/index.html">Categories</a
+          ><a href="../products/index.html?wishlist=1">♡ <b data-wish>0</b></a
+          ><a href="../cart/index.html">🛒 <b data-cart>0</b></a>
+        </div>
+      </nav>
+    </header>
+    <section class="hero">
+      <h1>Everything you love, all in one place.</h1>
+      <p>
+        Discover trending products, everyday essentials, exclusive deals and a
+        smooth shopping experience.
+      </p>
+      <a class="btn alt" href="../products/index.html">Shop Now →</a>
+    </section>
+    <main class="container">
+      <div class="section-title"><h2>Shop by Category</h2></div>
+      <div class="chips">
+        <a class="chip" href="../products/index.html?category=Mobiles"
+          >Mobiles</a
+        ><a class="chip" href="../products/index.html?category=Laptops"
+          >Laptops</a
+        ><a class="chip" href="../products/index.html?category=Audio">Audio</a
+        ><a class="chip" href="../products/index.html?category=TV">TV</a
+        ><a class="chip" href="../products/index.html?category=Cameras"
+          >Cameras</a
+        ><a class="chip" href="../products/index.html?category=Accessories"
+          >Accessories</a
+        ><a class="chip" href="../products/index.html?category=Smart Home"
+          >Smart Home</a
+        ><a class="chip" href="../products/index.html?category=Gaming"
+          >Gaming</a
+        >
+      </div>
+      <div class="section-title">
+        <h2>Trending Products</h2>
+        <a href="../products/index.html">View All</a>
+      </div>
+      <div id="list" class="grid"></div>
+    </main>
+    <footer class="footer">
+      <div class="footer-grid">
+        <div>
+          <h3>📱 TechZone</h3>
+          <p>
+            Modern shopping marketplace with products, offers, secure checkout
+            and easy returns.
+          </p>
+        </div>
+        <div>
+          <h3>Shop</h3>
+          <a href="../products/index.html">All Products</a
+          ><a href="../products/index.html">New Arrivals</a
+          ><a href="../products/index.html">Best Sellers</a>
+        </div>
+        <div>
+          <h3>Help</h3>
+          <a href="../cart/index.html">Cart</a
+          ><a href="../checkout/index.html">Checkout</a><a href="#">Returns</a>
+        </div>
+        <div>
+          <h3>Company</h3>
+          <a href="#">About</a><a href="#">Contact</a><a href="#">Privacy</a>
+        </div>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+      document.getElementById('list').innerHTML=PRODUCTS.slice(0,8).map(card).join('');function card(p){return `<article class="card"><a href="../product-details/index.html?id=${p.id}"><img src="${p.img}"></a><div class="card-body"><button class="heart" onclick='toggle(${"id": 1, "name": "Galaxy Smartphone", "brand": "Samsung", "price": 39999, "group": "Mobiles", "category": "Phone", "option": "8 GB / 128 GB", "img": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=700&q=80"})'>♡</button><div class="brand">${p.brand} • ${p.category}</div><h3>${p.name}</h3><div class="rating">★★★★★</div><div class="price">${money(p.price)}</div><button class="btn" onclick='add(${JSON.stringify(p)},p.option)'>Add to Cart</button></div></article>`}
+    </script>
+  </body>
+</html>

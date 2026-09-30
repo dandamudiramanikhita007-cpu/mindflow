@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>FreshBasket | Categories</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="top">
+      Free delivery above ₹999 • Easy returns • Secure payments
+    </div>
+    <header class="header">
+      <nav class="nav">
+        <a class="logo" href="../home/index.html"
+          >🛒 FreshBasket<span>+</span></a
+        >
+        <div class="search">
+          <input
+            id="search"
+            placeholder="Search products, brands, categories"
+          /><button onclick="search()">⌕</button>
+        </div>
+        <div class="nav-links">
+          <a href="../home/index.html">Home</a
+          ><a href="../categories/index.html">Shop</a
+          ><a href="../categories/index.html">Categories</a
+          ><a href="../categories/index.html?wishlist=1">♡ <b data-wish>0</b></a
+          ><a href="../cart/index.html">🛒 <b data-cart>0</b></a>
+        </div>
+      </nav>
+    </header>
+    <main class="container">
+      <h1>Explore Products</h1>
+      <p>Search, filter and sort products.</p>
+      <div class="filters">
+        <label>Search<input id="q" placeholder="Product or brand" /></label
+        ><label
+          >Category<select id="cat">
+            <option value="">All</option>
+            <option>Fruits</option>
+            <option>Vegetables</option>
+            <option>Dairy</option>
+            <option>Bakery</option>
+            <option>Beverages</option>
+            <option>Snacks</option>
+            <option>Staples</option>
+            <option>Household</option>
+          </select></label
+        ><label
+          >Price<select id="price">
+            <option value="">Any</option>
+            <option value="low">Under ₹1,500</option>
+            <option value="mid">₹1,500–₹3,000</option>
+            <option value="high">Above ₹3,000</option>
+          </select></label
+        ><label
+          >Size / Option<select id="opt">
+            <option value="">All</option>
+            <option>S</option>
+            <option>M</option>
+            <option>L</option>
+            <option>XL</option>
+            <option>One Size</option>
+            <option>256 GB</option>
+            <option>1 kg</option>
+          </select></label
+        ><label
+          >Sort<select id="sort">
+            <option value="">Featured</option>
+            <option value="lo">Price Low-High</option>
+            <option value="hi">Price High-Low</option>
+            <option value="az">Name A-Z</option>
+          </select></label
+        >
+      </div>
+      <div class="products-head">
+        <b id="count"></b
+        ><button class="btn" onclick="clearAll()">Clear All</button>
+      </div>
+      <div id="list" class="grid"></div>
+    </main>
+    <footer class="footer">
+      <div class="footer-grid">
+        <div>
+          <h3>🛒 FreshBasket</h3>
+          <p>
+            Modern shopping marketplace with products, offers, secure checkout
+            and easy returns.
+          </p>
+        </div>
+        <div>
+          <h3>Shop</h3>
+          <a href="../categories/index.html">All Products</a
+          ><a href="../categories/index.html">New Arrivals</a
+          ><a href="../categories/index.html">Best Sellers</a>
+        </div>
+        <div>
+          <h3>Help</h3>
+          <a href="../cart/index.html">Cart</a
+          ><a href="../checkout/index.html">Checkout</a><a href="#">Returns</a>
+        </div>
+        <div>
+          <h3>Company</h3>
+          <a href="#">About</a><a href="#">Contact</a><a href="#">Privacy</a>
+        </div>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+      const list = document.getElementById("list");
+
+      function card(p) {
+        return `<article class="card"><a href="../product-details/index.html?id=${p.id}"><img src="${p.img}" alt="${p.name}"></a><div class="card-body"><button class="heart" data-product-action="wish" data-product-id="${p.id}">♡</button><div class="brand">${p.brand} • ${p.category}</div><h3>${p.name}</h3><div class="rating">★★★★★</div><div class="price">${money(p.price)}</div><button class="btn" data-product-action="cart" data-product-id="${p.id}">Add to Cart</button></div></article>`;
+      }
+
+      list.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-product-action]");
+        if (!button) return;
+
+        const product = PRODUCTS.find(
+          (item) => item.id === Number(button.dataset.productId),
+        );
+        if (!product) return;
+
+        if (button.dataset.productAction === "wish") toggle(product);
+        if (button.dataset.productAction === "cart")
+          add(product, product.option);
+      });
+
+      function render() {
+        let q = document.getElementById("q").value.toLowerCase(),
+          c = document.getElementById("cat").value,
+          pr = document.getElementById("price").value,
+          o = document.getElementById("opt").value,
+          s = document.getElementById("sort").value;
+        const wishlistOnly =
+          new URLSearchParams(location.search).get("wishlist") === "1";
+        let a = PRODUCTS.filter(
+          (p) =>
+            (!wishlistOnly || wish().some((item) => item.id === p.id)) &&
+            (!q || (p.name + p.brand + p.category).toLowerCase().includes(q)) &&
+            (!c || p.group === c) &&
+            (!o || p.option.includes(o)) &&
+            (!pr ||
+              (pr == "low" && p.price < 1500) ||
+              (pr == "mid" && p.price >= 1500 && p.price <= 3000) ||
+              (pr == "high" && p.price > 3000)),
+        );
+        if (s == "lo") a.sort((x, y) => x.price - y.price);
+        if (s == "hi") a.sort((x, y) => y.price - x.price);
+        if (s == "az") a.sort((x, y) => x.name.localeCompare(y.name));
+        document.getElementById("count").textContent = a.length + " products";
+        document.getElementById("list").innerHTML =
+          a.map(card).join("") || '<div class="empty">No products found.</div>';
+      }
+      function clearAll() {
+        ["q", "cat", "price", "opt", "sort"].forEach(
+          (x) => (document.getElementById(x).value = ""),
+        );
+        render();
+      }
+      ["q", "cat", "price", "opt", "sort"].forEach(
+        (x) => (document.getElementById(x).oninput = render),
+      );
+      let u = new URLSearchParams(location.search);
+      if (u.get("q")) document.getElementById("q").value = u.get("q");
+      if (u.get("category"))
+        document.getElementById("cat").value = u.get("category");
+      render();
+    </script>
+  </body>
+</html>

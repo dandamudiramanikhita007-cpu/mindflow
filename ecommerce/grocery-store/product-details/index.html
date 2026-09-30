@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>FreshBasket | Product-Details</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="top">
+      Free delivery above ₹999 • Easy returns • Secure payments
+    </div>
+    <header class="header">
+      <nav class="nav">
+        <a class="logo" href="../home/index.html"
+          >🛒 FreshBasket<span>+</span></a
+        >
+        <div class="search">
+          <input
+            id="search"
+            placeholder="Search products, brands, categories"
+          /><button onclick="search()">⌕</button>
+        </div>
+        <div class="nav-links">
+          <a href="../home/index.html">Home</a
+          ><a href="../categories/index.html">Shop</a
+          ><a href="../categories/index.html">Categories</a
+          ><a href="../categories/index.html?wishlist=1">♡ <b data-wish>0</b></a
+          ><a href="../cart/index.html">🛒 <b data-cart>0</b></a>
+        </div>
+      </nav>
+    </header>
+    <main class="container"><div id="detail"></div></main>
+    <footer class="footer">
+      <div class="footer-grid">
+        <div>
+          <h3>🛒 FreshBasket</h3>
+          <p>
+            Modern shopping marketplace with products, offers, secure checkout
+            and easy returns.
+          </p>
+        </div>
+        <div>
+          <h3>Shop</h3>
+          <a href="../categories/index.html">All Products</a
+          ><a href="../categories/index.html">New Arrivals</a
+          ><a href="../categories/index.html">Best Sellers</a>
+        </div>
+        <div>
+          <h3>Help</h3>
+          <a href="../cart/index.html">Cart</a
+          ><a href="../checkout/index.html">Checkout</a><a href="#">Returns</a>
+        </div>
+        <div>
+          <h3>Company</h3>
+          <a href="#">About</a><a href="#">Contact</a><a href="#">Privacy</a>
+        </div>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+      let p =
+        PRODUCTS.find(
+          (x) => x.id == Number(new URLSearchParams(location.search).get("id")),
+        ) || PRODUCTS[0];
+      document.getElementById("detail").innerHTML =
+        `<div class="detail"><img src="${p.img}"><div><div class="brand">${p.brand} • ${p.category}</div><h1>${p.name}</h1><div class="rating">★★★★★ 4.8 (128 reviews)</div><div class="price">${money(p.price)} <span class="old">${money(p.price * 1.25)}</span></div><p>Premium quality product. Free delivery, secure payment and easy returns available.</p><h3>Choose Size / Option</h3><div class="options">${p.option
+          .split(",")
+          .map((x) => `<button class="option">${x}</button>`)
+          .join(
+            "",
+          )}</div><button id="buy" class="btn">Add to Cart</button> <button id="wish" class="btn alt">♡ Wishlist</button><br><br><p>✓ Genuine product &nbsp; ✓ Easy returns &nbsp; ✓ Secure checkout</p></div></div>`;
+      document.querySelector(".option").classList.add("active");
+      document.querySelectorAll(".option").forEach(
+        (b) =>
+          (b.onclick = () => {
+            document
+              .querySelectorAll(".option")
+              .forEach((x) => x.classList.remove("active"));
+            b.classList.add("active");
+          }),
+      );
+      document.getElementById("buy").onclick = () =>
+        add(p, document.querySelector(".active").textContent);
+      document.getElementById("wish").onclick = () => toggle(p);
+    </script>
+  </body>
+</html>
