@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz | AI Study Assistant</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="../home/index.html">AI Study Assistant</a>
+  <button class="menu-btn" id="menuBtn">☰</button>
+  <nav id="mainNav"><a href="../home/index.html">Study Dashboard</a>
+<a href="../subjects/index.html">Subjects</a>
+<a href="../ai-tutor/index.html">AI Tutor</a>
+<a href="../quiz/index.html">Quiz</a>
+<a href="../flashcards/index.html">Flashcards</a>
+<a href="../progress/index.html">Progress</a>
+<a href="../profile/index.html">Profile</a></nav>
+</header>
+<main>
+  <section class="hero">
+    <div>
+      <span class="badge">AI & Productivity</span>
+      <h1>Quiz</h1>
+      <p>Test your knowledge with interactive practice questions.</p>
+      <button class="primary" id="heroBtn">Get Started</button>
+    </div>
+    <div class="hero-art"><div class="orb">AI</div></div>
+  </section>
+  <section class="cards"><article class="card"><div class="icon">1</div><h3>Quick Quiz</h3><p>Test your understanding with short questions.</p><button class="demo-btn" data-action="Quick Quiz">Try Now</button></article><article class="card"><div class="icon">2</div><h3>Practice Mode</h3><p>Practice a topic at your own pace.</p><button class="demo-btn" data-action="Practice Mode">Try Now</button></article><article class="card"><div class="icon">3</div><h3>Results</h3><p>Review your answers and identify areas to improve.</p><button class="demo-btn" data-action="Results">Try Now</button></article></section>
+  
+        <section class="quiz-box">
+          <h2>Quick Practice</h2>
+          <p>Which option best describes the purpose of an AI study assistant?</p>
+          <div class="options">
+            <button class="option">Organize and support learning</button>
+            <button class="option">Only store files</button>
+            <button class="option">Only play videos</button>
+          </div>
+          <p id="quizResult"></p>
+        </section>
+</main>
+<footer><p>© 2026 AI Study Assistant • UI Template Collection</p></footer>
+<script src="script.js"></script>
+</body>
+</html>
