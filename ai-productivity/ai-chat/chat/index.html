@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chat | AI Chat</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="../home/index.html">AI Chat</a>
+  <button class="menu-btn" id="menuBtn">☰</button>
+  <nav id="mainNav"><a href="../home/index.html">AI Chat</a>
+<a href="../chat/index.html">Chat</a>
+<a href="../history/index.html">Chat History</a>
+<a href="../explore/index.html">Explore</a>
+<a href="../favorites/index.html">Favorites</a>
+<a href="../settings/index.html">Settings</a>
+<a href="../profile/index.html">Profile</a></nav>
+</header>
+<main>
+  <section class="hero">
+    <div>
+      <span class="badge">AI & Productivity</span>
+      <h1>Chat</h1>
+      <p>Start a focused conversation with your AI assistant.</p>
+      <button class="primary" id="heroBtn">Get Started</button>
+    </div>
+    <div class="hero-art"><div class="orb">AI</div></div>
+  </section>
+  <section class="cards"><article class="card"><div class="icon">1</div><h3>Ask Anything</h3><p>Type a question below and start a conversation.</p><button class="demo-btn" data-action="Ask Anything">Try Now</button></article><article class="card"><div class="icon">2</div><h3>Brainstorm</h3><p>Generate ideas, plans, summaries, and explanations.</p><button class="demo-btn" data-action="Brainstorm">Try Now</button></article><article class="card"><div class="icon">3</div><h3>Continue Chat</h3><p>Keep your conversation focused with useful follow-up prompts.</p><button class="demo-btn" data-action="Continue Chat">Try Now</button></article></section>
+  
+        <section class="generator">
+          <h2>AI Workspace</h2>
+          <textarea id="promptInput" placeholder="Type your idea or question here..."></textarea>
+          <button class="primary" id="generateBtn">Generate</button>
+          <div id="resultBox" class="result">Your generated result will appear here.</div>
+        </section>
+</main>
+<footer><p>© 2026 AI Chat • UI Template Collection</p></footer>
+<script src="script.js"></script>
+</body>
+</html>

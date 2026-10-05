@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Tutor | AI Study Assistant</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="../home/index.html">AI Study Assistant</a>
+  <button class="menu-btn" id="menuBtn">☰</button>
+  <nav id="mainNav"><a href="../home/index.html">Study Dashboard</a>
+<a href="../subjects/index.html">Subjects</a>
+<a href="../ai-tutor/index.html">AI Tutor</a>
+<a href="../quiz/index.html">Quiz</a>
+<a href="../flashcards/index.html">Flashcards</a>
+<a href="../progress/index.html">Progress</a>
+<a href="../profile/index.html">Profile</a></nav>
+</header>
+<main>
+  <section class="hero">
+    <div>
+      <span class="badge">AI & Productivity</span>
+      <h1>AI Tutor</h1>
+      <p>Ask questions and get step-by-step study guidance.</p>
+      <button class="primary" id="heroBtn">Get Started</button>
+    </div>
+    <div class="hero-art"><div class="orb">AI</div></div>
+  </section>
+  <section class="cards"><article class="card"><div class="icon">1</div><h3>Ask a Question</h3><p>Get a clear explanation of difficult concepts.</p><button class="demo-btn" data-action="Ask a Question">Try Now</button></article><article class="card"><div class="icon">2</div><h3>Step by Step</h3><p>Break complex problems into manageable steps.</p><button class="demo-btn" data-action="Step by Step">Try Now</button></article><article class="card"><div class="icon">3</div><h3>Practice</h3><p>Ask the tutor to generate examples and exercises.</p><button class="demo-btn" data-action="Practice">Try Now</button></article></section>
+  
+        <section class="generator">
+          <h2>AI Workspace</h2>
+          <textarea id="promptInput" placeholder="Type your idea or question here..."></textarea>
+          <button class="primary" id="generateBtn">Generate</button>
+          <div id="resultBox" class="result">Your generated result will appear here.</div>
+        </section>
+</main>
+<footer><p>© 2026 AI Study Assistant • UI Template Collection</p></footer>
+<script src="script.js"></script>
+</body>
+</html>
