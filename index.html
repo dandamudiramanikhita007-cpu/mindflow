@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UI Template Collection | Team Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="#">
+      <span class="brand-icon">✦</span>
+      <span>UI Template Collection</span>
+    </a>
+    <nav>
+      <a href="#apps">Applications</a>
+      <a href="#topics">Topics</a>
+      <a href="#about">About</a>
+    </nav>
+    <button id="themeBtn" class="icon-btn" aria-label="Toggle theme">🌙</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <span class="eyebrow">TEAM FRONTEND PROJECT • 2026</span>
+        <h1>One dashboard.<br><span>12 modern UI templates.</span></h1>
+        <p>
+          Explore our collection of responsive frontend interfaces across
+          E-commerce, Finance & Services, and AI & Productivity.
+        </p>
+        <div class="hero-actions">
+          <a href="#apps" class="btn primary">Explore Applications →</a>
+          <a href="#about" class="btn secondary">About Project</a>
+        </div>
+        <div class="stats">
+          <div><strong>12</strong><small>Applications</small></div>
+          <div><strong>3</strong><small>Topics</small></div>
+          <div><strong>36+</strong><small>UI Pages</small></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="orb orb1"></div>
+        <div class="orb orb2"></div>
+        <div class="dashboard-card">
+          <div class="mini-top"><span></span><span></span><span></span></div>
+          <div class="mini-title">Template Dashboard</div>
+          <div class="mini-grid">
+            <div>🛍️<b>E-commerce</b></div>
+            <div>💳<b>Finance</b></div>
+            <div>🤖<b>AI</b></div>
+            <div>📊<b>Productivity</b></div>
+          </div>
+          <div class="mini-line"></div>
+          <div class="mini-line short"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="topics" class="section">
+      <div class="section-heading">
+        <span class="eyebrow">EXPLORE BY TOPIC</span>
+        <h2>Choose a domain</h2>
+        <p>Jump directly to a collection of related applications.</p>
+      </div>
+      <div class="topic-grid">
+        <button class="topic-card ecommerce" data-filter="ecommerce">
+          <span class="topic-icon">🛍️</span>
+          <div><h3>E-commerce & Shopping</h3><p>4 applications</p></div>
+          <span>→</span>
+        </button>
+        <button class="topic-card finance" data-filter="finance">
+          <span class="topic-icon">💰</span>
+          <div><h3>Finance & Services</h3><p>4 applications</p></div>
+          <span>→</span>
+        </button>
+        <button class="topic-card ai" data-filter="ai">
+          <span class="topic-icon">🤖</span>
+          <div><h3>AI & Productivity</h3><p>4 applications</p></div>
+          <span>→</span>
+        </button>
+      </div>
+    </section>
+
+    <section id="apps" class="section apps-section">
+      <div class="section-heading row-heading">
+        <div>
+          <span class="eyebrow">12 APPLICATIONS</span>
+          <h2>Explore the collection</h2>
+        </div>
+        <div class="controls">
+          <input id="searchInput" type="search" placeholder="Search applications..." aria-label="Search applications">
+          <select id="categoryFilter" aria-label="Filter applications">
+            <option value="all">All topics</option>
+            <option value="ecommerce">E-commerce</option>
+            <option value="finance">Finance</option>
+            <option value="ai">AI & Productivity</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="appGrid" class="app-grid">
+        <article class="app-card" data-category="ecommerce" data-name="Fashion Store">
+          <div class="app-icon fashion">👗</div><span class="tag">E-COMMERCE</span>
+          <h3>Fashion Store</h3><p>Modern fashion shopping experience with products, cart and checkout.</p>
+          <div class="card-footer"><span>6 pages</span><a href="ecommerce/fashion-store/home/index.html">Launch →</a></div>
+        </article>
+        <article class="app-card" data-category="ecommerce" data-name="Beauty Cosmetics Store">
+          <div class="app-icon beauty">💄</div><span class="tag">E-COMMERCE</span>
+          <h3>Beauty & Cosmetics Store</h3><p>Clean cosmetics storefront with product browsing and purchase flow.</p>
+          <div class="card-footer"><span>6 pages</span><a href="ecommerce/beauty-store/home/index.html">Launch →</a></div>
+        </article>
+        <article class="app-card" data-category="ecommerce" data-name="Grocery Store">
+          <div class="app-icon grocery">🛒</div><span class="tag">E-COMMERCE</span>
+          <h3>Grocery Store</h3><p>Everyday grocery shopping interface with categories and order tracking.</p>
+          <div class="card-footer"><span>6 pages</span><a href="ecommerce/grocery-store/home/index.html">Launch →</a></div>
+        </article>
+        <article class="app-card" data-category="ecommerce" data-name="Electronics Store">
+          <div class="app-icon electronics">💻</div><span class="tag">E-COMMERCE</span>
+          <h3>Electronics Store</h3><p>Electronics marketplace with products, comparison and checkout.</p>
+          <div class="card-footer"><span>6 pages</span><a href="ecommerce/electronics-store/home/index.html">Launch →</a></div>
+        </article>
+
+        <article class="app-card" data-category="finance" data-name="Banking">
+          <div class="app-icon banking">🏦</div><span class="tag">FINANCE</span>
+          <h3>Banking</h3><p>Online banking dashboard for accounts, cards, transfers and loans.</p>
+          <div class="card-footer"><span>7 pages</span><a href="finance/banking/dashboard/index.html">Launch →</a></div>
+        </article>
+        <article class="app-card" data-category="finance" data-name="Digital Wallet">
+          <div class="app-icon wallet">💳</div><span class="tag">FINANCE</span>
+          <h3>Digital Wallet</h3><p>Digital wallet interface for payments, bills, offers and transactions.</p>
+          <div class="card-footer"><span>7 pages</span><a href="finance/digital-wallet/home/index.html">Launch →</a></div>
+        </article>
+        <article class="app-card" data-category="finance" data-name="Insurance">
+          <div class="app-icon insurance">🛡️</div><span class="tag">FINANCE</span>
+          <h3>Insurance</h3><p>Insurance management experience for policies, quotes, claims and renewals.</p>
+          <div class="card-footer"><span>7 pages</span><a href="finance/insurance/home/index.html">Launch →</a></div>
+        </article>
+        <article class="app-card" data-category="finance" data-name="Investment">
+          <div class="app-icon investment">📈</div><span class="tag">FINANCE</span>
+          <h3>Investment</h3><p>Investment dashboard for portfolios, markets, goals and transactions.</p>
+          <div class="card-footer"><span>7 pages</span><a href="finance/investment/dashboard/index.html">Launch →</a></div>
+        </article>
+
+        <article class="app-card" data-category="ai" data-name="AI Chat">
+          <div class="app-icon chat">🤖</div><span class="tag">AI & PRODUCTIVITY</span>
+          <h3>AI Chat</h3><p>Conversational AI interface with history, favorites and settings.</p>
+          <div class="card-footer"><span>7 pages</span><a href="ai-productivity/ai-chat/home/index.html">Launch →</a></div>
+        </article>
+        <article class="app-card" data-category="ai" data-name="AI Study Assistant">
+          <div class="app-icon study">📚</div><span class="tag">AI & PRODUCTIVITY</span>
+          <h3>AI Study Assistant</h3><p>Learning interface with AI tutor, quizzes, flashcards and progress.</p>
+          <div class="card-footer"><span>7 pages</span><a href="ai-productivity/ai-study-assistant/home/index.html">Launch →</a></div>
+        </article>
+        <article class="app-card" data-category="ai" data-name="AI Resume Builder">
+          <div class="app-icon resume">📄</div><span class="tag">AI & PRODUCTIVITY</span>
+          <h3>AI Resume Builder</h3><p>Resume creation workflow with templates, editing and preview.</p>
+          <div class="card-footer"><span>7 pages</span><a href="ai-productivity/ai-resume-builder/home/index.html">Launch →</a></div>
+        </article>
+        <article class="app-card" data-category="ai" data-name="AI Content Generator">
+          <div class="app-icon content">✍️</div><span class="tag">AI & PRODUCTIVITY</span>
+          <h3>AI Content Generator</h3><p>Content creation tools for blogs, social media, emails and prompts.</p>
+          <div class="card-footer"><span>7 pages</span><a href="ai-productivity/ai-content-generator/home/index.html">Launch →</a></div>
+        </article>
+      </div>
+      <p id="noResults" class="no-results" hidden>No applications found. Try another search.</p>
+    </section>
+
+    <section id="about" class="about section">
+      <div>
+        <span class="eyebrow">ABOUT THE PROJECT</span>
+        <h2>Built as a collaborative UI collection</h2>
+        <p>
+          This project demonstrates modern frontend UI patterns using HTML,
+          CSS and JavaScript while following a GitHub team workflow:
+          Fork → Clone → Branch → Develop → Commit → Push → Pull Request → Review → Merge.
+        </p>
+      </div>
+      <div class="about-stats">
+        <div><strong>3</strong><span>Team Members</span></div>
+        <div><strong>12</strong><span>Applications</span></div>
+        <div><strong>72+</strong><span>Core Files</span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 UI Template Collection • Team Frontend Project</p>
+    <a href="#apps">Back to applications ↑</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
